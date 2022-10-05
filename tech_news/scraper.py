@@ -59,13 +59,11 @@ def get_tech_news(amount):
         links = scrape_novidades(html_page)
 
         for link in links:
-            # if len(info_news_list) == amount:
-            #     break
             html_new_page = fetch(link)
             info_new_page = scrape_noticia(html_new_page)
             info_news_list.append(info_new_page)
 
-        url = scrape_next_page_link(html_new_page)
+        url = scrape_next_page_link(html_page)
 
     create_news(info_news_list[:amount])
     return info_news_list[:amount]
