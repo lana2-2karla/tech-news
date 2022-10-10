@@ -1,4 +1,5 @@
 from tech_news.database import search_news
+from datetime import datetime
 
 
 def search_by_title(title):
@@ -8,6 +9,8 @@ def search_by_title(title):
 
 def search_by_date(date_iso):
     try:
+        datetime.strptime(date_iso, "%Y-%m-%d")
+
         date = date_iso.split("-")
         date_formated = f"{date[2]}/{date[1]}/{date[0]}"
 
